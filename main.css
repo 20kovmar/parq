@@ -1,4 +1,10 @@
-.jumbotron {
+body {
   background-image: url("imgs/background.jpg");
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: auto;
+}
+
+.jumbotron {
+  background: rgba(233,236,239,0.5);
 }
