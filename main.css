@@ -1,8 +1,7 @@
 body {
   background-image: url("imgs/background.jpg");
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: auto;
+  background-size: contain;
 }
 
 .jumbotron {
