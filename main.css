@@ -1,6 +1,4 @@
 .jumbotron {
-  max-width: 500px;
-  margin: auto;
   background-image: url("imgs/background.jpg");
   background-size: cover;
 }
