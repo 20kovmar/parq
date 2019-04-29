@@ -3,6 +3,11 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto;
+  font-family: 'Advent Pro', sans-serif;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .jumbotron {
