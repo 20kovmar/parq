@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="main.css">
     <title>Parq</title>
   </head>
@@ -31,63 +33,128 @@
       </div>
     </nav>
     <div class="jumbotron">
+
+<!-- Vendor libraries -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js"></script>
+
+<!-- If you're using Stripe for payments -->
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
 <div class="container">
-    <div class='row'>
-        <div class='col-md-4'></div>
-        <div class='col-md-4'>
-          <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
-          <form accept-charset="UTF-8" action="/" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="pk_bQQaTxnaZlzv4FnnuZ28LFHccVSaj" id="payment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓" /><input name="_method" type="hidden" value="PUT" /><input name="authenticity_token" type="hidden" value="qLZ9cScer7ZxqulsUWazw4x3cSEzv899SP/7ThPCOV8=" /></div>
-            <div class='form-row'>
-              <div class='col-xs-12 form-group required'>
-                <label class='control-label'>Name on Card</label>
-                <input class='form-control' size='4' type='text'>
-              </div>
-            </div>
-            <div class='form-row'>
-              <div class='col-xs-12 form-group card required'>
-                <label class='control-label'>Card Number</label>
-                <input autocomplete='off' class='form-control card-number' size='20' type='text'>
-              </div>
-            </div>
-            <div class='form-row'>
-              <div class='col-xs-4 form-group cvc required'>
-                <label class='control-label'>CVC</label>
-                <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
-              </div>
-              <div class='col-xs-4 form-group expiration required'>
-                <label class='control-label'>Expiration</label>
-                <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
-              </div>
-              <div class='col-xs-4 form-group expiration required'>
-                <label class='control-label'> </label>
-                <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
-              </div>
-            </div>
-            <div class='form-row'>
-              <div class='col-md-12'>
-                <div class='form-control total btn btn-info'>
-                  Total:
-                  <span class='amount'>$300</span>
+    <div class="row">
+        <!-- You can make it whatever width you want. I'm making it full width
+             on <= small devices and 4/12 page width on >= medium devices -->
+        <div class="col-xs-12 col-md-4">
+        
+        
+            <!-- CREDIT CARD FORM STARTS HERE -->
+            <div class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table" >
+                    <div class="row display-tr" >
+                        <h3 class="panel-title display-td" >Payment Details</h3>
+                        <div class="display-td" >                            
+                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                        </div>
+                    </div>                    
                 </div>
-              </div>
-            </div>
-            <div class='form-row'>
-              <div class='col-md-12 form-group'>
-                <button class='form-control btn btn-primary submit-button' type='submit'>Pay »</button>
-              </div>
-            </div>
-            <div class='form-row'>
-              <div class='col-md-12 error form-group hide'>
-                <div class='alert-danger alert'>
-                  Please correct the errors and try again.
+                <div class="panel-body">
+                    <form role="form" id="payment-form" method="POST" action="javascript:void(0);">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">CARD NUMBER</label>
+                                    <div class="input-group">
+                                        <input 
+                                            type="tel"
+                                            class="form-control"
+                                            name="cardNumber"
+                                            placeholder="Valid Card Number"
+                                            autocomplete="cc-number"
+                                            required autofocus 
+                                        />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                    <input 
+                                        type="tel" 
+                                        class="form-control" 
+                                        name="cardExpiry"
+                                        placeholder="MM / YY"
+                                        autocomplete="cc-exp"
+                                        required 
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cardCVC">CV CODE</label>
+                                    <input 
+                                        type="tel" 
+                                        class="form-control"
+                                        name="cardCVC"
+                                        placeholder="CVC"
+                                        autocomplete="cc-csc"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="couponCode">COUPON CODE</label>
+                                    <input type="text" class="form-control" name="couponCode" />
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="subscribe btn btn-success btn-lg btn-block" type="button">Start Subscription</button>
+                            </div>
+                        </div>
+                        <div class="row" style="display:none;">
+                            <div class="col-xs-12">
+                                <p class="payment-errors"></p>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </div>
-            </div>
-          </form>
+            </div>            
+            <!-- CREDIT CARD FORM ENDS HERE -->
+            
+            
+        </div>            
+        
+        <div class="col-xs-12 col-md-8" style="font-size: 12pt; line-height: 2em;">
+            <p><h1>Features:</h1>
+                <ul>
+                    <li>As-you-type, input formatting</li>
+                    <li>Form field validation (also as you type)</li>
+                    <li>Graceful error feedback for declined card, etc</li>
+                    <li>AJAX form submission w/ visual feedback</li>
+                    <li>Creates a Stripe credit card token</li>
+                </ul>
+            </p>
+            <p>Be sure to replace the dummy API key with a valid Stripe API key.</p>
+            
+            <p>Built upon: Bootstrap, jQuery, 
+                <a href="http://jqueryvalidation.org/">jQuery Validation Plugin</a>, 
+                <a href="https://github.com/stripe/jquery.payment">jQuery.payment library</a>,
+                and <a href="https://stripe.com/docs/stripe.js">Stripe.js</a>
+            </p>
         </div>
-        <div class='col-md-4'></div>
+        
     </div>
 </div>
+
     </div>                                                                                                                                      
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
