@@ -1,8 +1,6 @@
 body {
-  background-image: url("imgs/background.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: auto;
+  background: url("imgs/background.jpg") no-repeat center fixed; 
+  background-size: cover;
   font-family: 'Advent Pro', sans-serif;
 }
 
