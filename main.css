@@ -28,3 +28,7 @@ img {
 .navimg {
   max-width: 100px;
 }
+
+#fix {
+  text-align: center;
+}
